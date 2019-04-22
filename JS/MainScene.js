@@ -12,7 +12,7 @@ class MainScene extends GameScene {
     constructor() {
         super();
     }
-    
+
 /**
  *
  * init this scene
@@ -23,7 +23,10 @@ init() {
         var cp = new  CodePanel();
         this.addComponent(cp, -1);
 
-        //Instruction Menu Button 
+        //Instruction Menu Button
+        var backButton = Button.getButton('Back_Ins',375,0,0,0,'Back');
+        backButton.addClickEvent(new NewSceneEvent(new SelectChapterMenu()));
+        this.addComponent(backButton,-1);
         var InstructionMenuButton = Button.getButton('Instruction_Menu', 375, 30, 1, 3, 'IM');
         InstructionMenuButton.addClickEvent(new NewSceneEvent(new InstructionMenu()));
         var IMHint= new HintEvent('IMHint')
@@ -48,6 +51,6 @@ init() {
         cpu.setSpeed(1);
 
         RunButon.addClickEvent(new RunCodeEvent(new Interpreter(cpu, cp, m, r)));
-      
+
     }
 }
